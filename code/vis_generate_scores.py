@@ -197,9 +197,6 @@ if __name__=="__main__":
 
                 if i%batchsize==0 and i>0:
                     pred = []
-                    net.blobs['data1'].data[...] = np.array(out_images1)
-                    net.blobs['data2'].data[...] = np.array(out_images2)
-
                     out = net.forward_all(data1=np.asarray(out_images1),data2=np.asarray(out_images2))
                     preds = out['fc8r']
 
