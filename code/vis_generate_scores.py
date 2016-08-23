@@ -151,6 +151,8 @@ if __name__=="__main__":
             '/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
         transformer.set_raw_scale('data', 255)
 
+        pool = Pool(processes=10)
+        
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
             # with 15 random images from reference along 15 random from set with their votes
@@ -179,8 +181,6 @@ if __name__=="__main__":
                 image1 = transformer.preprocess('data',caffe.io.load_image(img1))
                 list_img_copy = list(list_img)
                 list_img_copy.remove(img1)
-
-                pool = Pool(processes=10)
 
                 j_list1 = [];
                 for j in range(15):
