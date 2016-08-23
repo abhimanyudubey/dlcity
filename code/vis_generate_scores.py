@@ -193,7 +193,7 @@ if __name__=="__main__":
                 pool.join()
 
                 for j in range(30):
-                    out_pairs.append((img1,j_list1[j]))
+                    out_pairs.append((img1,j_list1[j][0]))
                     out_images1.append(image1)
                     out_images2.append(res1[j])
 
