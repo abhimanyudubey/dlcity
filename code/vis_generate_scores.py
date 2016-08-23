@@ -5,7 +5,12 @@ import random
 import os
 from trueskill import TrueSkill
 import numpy as np
+from functools import partial
+from multiprocessing import Pool
 
+def load_image(inp_file,transformer):
+    image = transformer.preprocess('data', caffe.io.load_image(inp_file))
+    return image
 
 def generate_scores(voteFile):
     # function to generate scores using TrueSkill using a vote file given in the format:
@@ -139,6 +144,14 @@ if __name__=="__main__":
         if not os.path.exists(os.path.join(dir_out, 'scores')):
             os.makedirs(os.path.join(dir_out, 'scores'))
 
+        transformer = caffe.io.Transformer({'data': net.blobs['data1'].data.shape})
+        transformer.set_transpose('data', (2, 0, 1))
+        transformer.set_mean('data', np.load(
+            '/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
+        transformer.set_raw_scale('data', 255)
+
+        partial_load_image = partial(load_image,transformer=transformer)
+
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
             # with 15 random images from reference along 15 random from set with their votes
@@ -146,10 +159,7 @@ if __name__=="__main__":
             file_vote = os.path.join(dir_out,'votes',os.path.basename(subdir))
             file_scores = os.path.join(dir_out,'scores',os.path.basename(subdir))
 
-            transformer = caffe.io.Transformer({'data': net.blobs['data1'].data.shape})
-            transformer.set_transpose('data', (2, 0, 1))
-            transformer.set_mean('data', np.load('/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
-            transformer.set_raw_scale('data', 255)
+
 
             print file_vote
             print file_scores
@@ -171,21 +181,22 @@ if __name__=="__main__":
                 list_img_copy = list(list_img)
                 list_img_copy.remove(img1)
 
+                pool = Pool(processes=12)
+
+                j_list1 = [];
                 for j in range(15):
-                    img2 = random.choice(global_image_dir)
-                    image2 = transformer.preprocess('data',caffe.io.load_image(img2))
-
-                    out_pairs.append((img1,img2))
-                    out_images1.append(image1)
-                    out_images2.append(image2)
-
+                    j_list1.append(random.choice(global_image_dir))
                 for j in range(15):
-                    img2 = random.choice(list_img_copy)
-                    image2 = transformer.preprocess('data',caffe.io.load_image(img2))
+                    j_list1.append(random.choice(list_img_copy))
 
-                    out_pairs.append((img1,img2))
+                res1 = pool.map(partial_load_image,j_list1,transformer)
+                pool.close()
+                pool.join()
+
+                for j in range(30):
+                    out_pairs.append((img1,j_list1[j]))
                     out_images1.append(image1)
-                    out_images2.append(image2)
+                    out_images2.append(res1[j])
 
                 if i%batchsize==0 and i>0:
                     pred = []
