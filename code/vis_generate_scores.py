@@ -151,7 +151,7 @@ if __name__=="__main__":
             '/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
         transformer.set_raw_scale('data', 255)
 
-        pool = Pool(processes=10)
+        pool = Pool(processes=30)
 
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
