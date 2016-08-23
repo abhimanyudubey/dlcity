@@ -147,7 +147,7 @@ if __name__=="__main__":
 
             transformer = caffe.io.Transformer({'data': net.blobs['data1'].data.shape})
             transformer.set_transpose('data', (2, 0, 1))
-            transformer.set_mean('data', np.load('/home/dubeya/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
+            transformer.set_mean('data', np.load('/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
             transformer.set_raw_scale('data', 255)
 
             votes = open(file_vote,'w')
