@@ -152,7 +152,7 @@ if __name__=="__main__":
         transformer.set_raw_scale('data', 255)
 
         pool = Pool(processes=10)
-        
+
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
             # with 15 random images from reference along 15 random from set with their votes
@@ -189,8 +189,6 @@ if __name__=="__main__":
                     j_list1.append((random.choice(list_img_copy),transformer))
 
                 res1 = pool.map(load_image,j_list1)
-                pool.close()
-                pool.join()
 
                 for j in range(30):
                     out_pairs.append((img1,j_list1[j][0]))
