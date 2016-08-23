@@ -159,12 +159,12 @@ if __name__=="__main__":
             out_pairs = [];
             out_images1 = [];
             out_images2 = [];
-            batchsize = 36; # for 30 images this gives us 1110 (close to GPU capacity)
+            batchsize = 37; # for 30 images this gives us 1110 (close to GPU capacity)
 
             print 'Generating votes for subdirectory',subdir, 'right now'
             print 'Total number of images',len(list_img),', total votes generated will be',len(list_img)*30
 
-            for i in range(len(list_img)):
+            for i in range(1,len(list_img)+1):
                 # first 15 votes will be with random images and the image itself
                 img1 = list_img[i]
                 image1 = transformer.preprocess('data',caffe.io.load_image(img1))
