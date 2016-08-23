@@ -134,7 +134,7 @@ if __name__=="__main__":
         global_params,global_ts,global_vals = generate_scores(file_ref)
         global_image_dir = glob.glob(os.path.join(dir_ref_images,'*.jpg'))+glob.glob(os.path.join(dir_ref_images,'*.JPG'))
 
-        caffe.set_mode_gpu()
+        #caffe.set_mode_gpu()
         net = caffe.Net(file_proto,file_model,caffe.TRAIN)
 
         subdir_src = [x for x in glob.glob(os.path.join(dir_src,'*')) if os.path.isdir(x)]
@@ -197,7 +197,10 @@ if __name__=="__main__":
 
                 if i%batchsize==0 and i>0:
                     pred = []
-                    out = net.forward_all(data1=np.asarray(out_images1),data2=np.asarray(out_images2))
+
+                    final_images = np.asarray(out_images1+out_images2)
+                    net.set_input_arrays(final_images)
+                    out = net.forward_all()
                     preds = out['fc8r']
 
                     for k in range(0,batchsize*30):
@@ -221,10 +224,10 @@ if __name__=="__main__":
                     out_images1.append(out_images1[0])
                     out_images2.append(out_images1[0])
 
-                net.blobs['data1'].data[...] = np.array(out_images1)
-                net.blobs['data2'].data[...] = np.array(out_images2)
+                final_images = np.asarray(out_images1 + out_images2)
+                net.set_input_arrays(final_images)
+                out = net.forward_all()
 
-                out = net.forward_all(data1=np.asarray(out_images1), data2=np.asarray(out_images2))
                 preds = out['fc8r']
 
                 for k in range(0, out_pairs):
