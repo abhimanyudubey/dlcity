@@ -187,7 +187,7 @@ if __name__=="__main__":
                     out_images1.append(image1)
                     out_images2.append(image2)
 
-                if i%batchsize==0:
+                if i%batchsize==0 and i>0:
                     pred = []
                     net.blobs['data1'].data[...] = np.array(out_images1)
                     net.blobs['data2'].data[...] = np.array(out_images2)
