@@ -142,8 +142,8 @@ if __name__=="__main__":
             # for each subdirectory of images, we do the comparisons
             # with 15 random images from reference along 15 random from set with their votes
             list_img = glob.glob(os.path.join(subdir,'*.jpg'))+glob.glob(os.path.join(subdir,'*.JPG'))
-            file_vote = os.path.join(dir_out,'votes',subdir)
-            file_scores = os.path.join(dir_out,'scores',subdir)
+            file_vote = os.path.join(dir_out,'votes',os.path.basename(subdir))
+            file_scores = os.path.join(dir_out,'scores',os.path.basename(subdir))
 
             transformer = caffe.io.Transformer({'data': net.blobs['data1'].data.shape})
             transformer.set_transpose('data', (2, 0, 1))
