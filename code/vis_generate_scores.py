@@ -130,7 +130,7 @@ if __name__=="__main__":
 
         net = caffe.Net(file_proto,file_model,caffe.TRAIN)
 
-        subdir_src = [x if os.isdir(x) for x in glob.glob(os.path.join(dir_src,'*'))]
+        subdir_src = [x for x in glob.glob(os.path.join(dir_src,'*')) if os.isdir(x)]
 
         if not os.path.exists(os.path.join(dir_out, 'votes')):
             os.makedirs(os.path.join(dir_out, 'votes'))
