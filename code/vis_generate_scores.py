@@ -1,6 +1,7 @@
 import caffe
 import sys
 import glob
+import random
 import os
 from trueskill import TrueSkill
 import numpy as np
