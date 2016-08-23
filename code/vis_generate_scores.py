@@ -5,10 +5,11 @@ import random
 import os
 from trueskill import TrueSkill
 import numpy as np
-from functools import partial
 from multiprocessing import Pool
 
-def load_image(inp_file,transformer):
+def load_image(inp):
+    inp_file = inp[0]
+    transformer = inp[1]
     image = transformer.preprocess('data', caffe.io.load_image(inp_file))
     return image
 
@@ -150,8 +151,6 @@ if __name__=="__main__":
             '/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
         transformer.set_raw_scale('data', 255)
 
-        partial_load_image = partial(load_image,transformer=transformer)
-
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
             # with 15 random images from reference along 15 random from set with their votes
@@ -181,15 +180,15 @@ if __name__=="__main__":
                 list_img_copy = list(list_img)
                 list_img_copy.remove(img1)
 
-                pool = Pool(processes=12)
+                pool = Pool(processes=10)
 
                 j_list1 = [];
                 for j in range(15):
-                    j_list1.append(random.choice(global_image_dir))
+                    j_list1.append((random.choice(global_image_dir),transformer))
                 for j in range(15):
-                    j_list1.append(random.choice(list_img_copy))
+                    j_list1.append((random.choice(list_img_copy),transformer))
 
-                res1 = pool.map(partial_load_image,j_list1,transformer)
+                res1 = pool.map(load_image,j_list1)
                 pool.close()
                 pool.join()
 
