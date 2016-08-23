@@ -240,6 +240,8 @@ if __name__=="__main__":
                     # write only those scores that belong to that subdir
                     file_scores.write(','.join([key,str(value[0])]))
 
+            file_scores.close()
+
             print 'Folder',subdir,'completed successfully'
 
 
