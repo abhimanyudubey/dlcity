@@ -150,6 +150,8 @@ if __name__=="__main__":
             transformer.set_mean('data', np.load('/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
             transformer.set_raw_scale('data', 255)
 
+            print file_vote
+            print file_scores
             votes = open(file_vote,'w')
             file_scores = open(file_scores,'w')
 
