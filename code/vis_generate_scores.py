@@ -170,7 +170,7 @@ if __name__=="__main__":
             out_pairs = [];
             out_images1 = [];
             out_images2 = [];
-            batchsize = 37; # for 30 images this gives us 1110 (close to GPU capacity)
+            batchsize = 60; # for 30 images this gives us 1110 (close to GPU capacity)
 
             print 'Generating votes for subdirectory',subdir, 'right now'
             print 'Total number of images',len(list_img),', total votes generated will be',len(list_img)*20
