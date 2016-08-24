@@ -199,7 +199,7 @@ if __name__=="__main__":
                     pred = []
 
                     final_images = np.asarray(out_images1+out_images2)
-                    dummy_labels = np.asarray([0.0]*len(final_images))
+                    dummy_labels = np.zeros(len(final_images),dtype=np.float32)
                     net.set_input_arrays(final_images,dummy_labels)
                     out = net.forward_all()
                     preds = out['fc8r']
