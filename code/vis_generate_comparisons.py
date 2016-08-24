@@ -228,8 +228,12 @@ if __name__ == "__main__":
                     #
                     # file_scores.close()
 
-    f1 = open('/home/dubeya/extrapolated_votes/comparisons_1', 'w')
-    f2 = open('/home/dubeya/extrapolated_votes/comparisons_2', 'w')
+    f1 = open('/home/dubeya/extrapolated_votes/safety/comparisons_1', 'w')
+    f2 = open('/home/dubeya/extrapolated_votes/safety/comparisons_2', 'w')
+    for pair in out_pairs:
+        f1.write(out_pairs[0]+" 0\n")
+        f2.write(out_pairs[1]+" 0\n")
+
 
 
 
