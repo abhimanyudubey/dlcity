@@ -206,6 +206,7 @@ if __name__=="__main__":
 
                     for k in range(0,batchsize*30):
                         pred = preds[k] / np.linalg.norm(preds[k], ord=1)
+                        print pred
                         if pred[0] > pred[1]:
                             votes.write(out_pairs[k][0] + ' ' + out_pairs[k][1] + ' ' + out_pairs[k][0] + '\n')
                         else:
