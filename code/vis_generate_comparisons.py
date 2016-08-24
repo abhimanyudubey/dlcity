@@ -162,6 +162,8 @@ if __name__ == "__main__":
             for i in range(1, len(list_img) + 1):
                 # first 15 votes will be with random images and the image itself
                 img1 = list_img[i]
+                list_img_copy = list(list_img)
+                list_img_copy.remove(img1)
 
                 j_list1 = [];
                 for j in range(15):
