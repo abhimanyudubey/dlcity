@@ -6,6 +6,7 @@ import os
 from trueskill import TrueSkill
 import numpy as np
 from multiprocessing import Pool
+import gc
 
 def load_image(inp):
     inp_file = inp[0]
@@ -202,6 +203,10 @@ if __name__=="__main__":
                     dummy_labels = np.zeros(len(final_images),dtype=np.float32)
                     net.set_input_arrays(final_images,dummy_labels)
                     out = net.forward()
+                    final_images = None
+                    dummy_labels = None
+                    gc.collect()
+
                     preds = out['fc8r']
 
                     for k in range(0,batchsize*30):
@@ -230,6 +235,9 @@ if __name__=="__main__":
                 dummy_labels = np.zeros(len(final_images), dtype=np.float32)
                 net.set_input_arrays(final_images, dummy_labels)
                 out = net.forward()
+                final_images = None
+                dummy_labels = None
+                gc.collect()
 
                 preds = out['fc8r']
 
