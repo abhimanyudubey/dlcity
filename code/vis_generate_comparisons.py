@@ -132,7 +132,6 @@ if __name__ == "__main__":
         dir_ref_images = sys.argv[4]
 
         # first generating global reference parameters
-        global_params, global_ts, global_vals = generate_scores(file_ref)
         global_image_dir = glob.glob(os.path.join(dir_ref_images, '*.jpg')) + glob.glob(
             os.path.join(dir_ref_images, '*.JPG'))
 
