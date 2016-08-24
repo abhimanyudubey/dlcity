@@ -134,7 +134,7 @@ if __name__=="__main__":
         global_params,global_ts,global_vals = generate_scores(file_ref)
         global_image_dir = glob.glob(os.path.join(dir_ref_images,'*.jpg'))+glob.glob(os.path.join(dir_ref_images,'*.JPG'))
 
-        #caffe.set_mode_gpu()
+        caffe.set_mode_gpu()
         net = caffe.Net(file_proto,file_model,caffe.TRAIN)
 
         subdir_src = [x for x in glob.glob(os.path.join(dir_src,'*')) if os.path.isdir(x)]
