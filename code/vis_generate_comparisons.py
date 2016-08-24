@@ -159,7 +159,7 @@ if __name__ == "__main__":
             print 'Generating comparisons for subdirectory', subdir, 'right now'
             print 'Total number of images', len(list_img), ', total votes generated will be', len(list_img) * 20
 
-            for i in range(1, len(list_img) + 1):
+            for i in range(0, len(list_img)):
                 # first 15 votes will be with random images and the image itself
                 img1 = list_img[i]
                 list_img_copy = list(list_img)
