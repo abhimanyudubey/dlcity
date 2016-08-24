@@ -151,7 +151,7 @@ if __name__=="__main__":
             '/home/dubeya/urban_segmentation/caffe-future/python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
         transformer.set_raw_scale('data', 255)
 
-        pool = Pool(processes=30)
+        pool = Pool(processes=20)
 
         for subdir in subdir_src:
             # for each subdirectory of images, we do the comparisons
@@ -173,7 +173,7 @@ if __name__=="__main__":
             batchsize = 37; # for 30 images this gives us 1110 (close to GPU capacity)
 
             print 'Generating votes for subdirectory',subdir, 'right now'
-            print 'Total number of images',len(list_img),', total votes generated will be',len(list_img)*30
+            print 'Total number of images',len(list_img),', total votes generated will be',len(list_img)*20
 
             for i in range(1,len(list_img)+1):
                 # first 15 votes will be with random images and the image itself
@@ -183,14 +183,14 @@ if __name__=="__main__":
                 list_img_copy.remove(img1)
 
                 j_list1 = [];
-                for j in range(15):
+                for j in range(10):
                     j_list1.append((random.choice(global_image_dir),transformer))
-                for j in range(15):
+                for j in range(10):
                     j_list1.append((random.choice(list_img_copy),transformer))
 
                 res1 = pool.map(load_image,j_list1)
 
-                for j in range(30):
+                for j in range(20):
                     out_pairs.append((img1,j_list1[j][0]))
                     out_images1.append(image1)
                     out_images2.append(res1[j])
@@ -200,7 +200,7 @@ if __name__=="__main__":
                     out = net.forward_all(data1=np.asarray(out_images1),data2=np.asarray(out_images2))
                     preds = out['fc8r']
 
-                    for k in range(0,batchsize*30):
+                    for k in range(0,batchsize*20):
                         pred = preds[k] / np.linalg.norm(preds[k], ord=1)
                         if pred[0] > pred[1]:
                             votes.write(out_pairs[k][0] + ' ' + out_pairs[k][1] + ' ' + out_pairs[k][0] + '\n')
@@ -211,18 +211,15 @@ if __name__=="__main__":
                     out_images2 = []
                     out_pairs = []
 
-                    print 'Generated',i*30,'votes out of ',len(list_img)*30
+                    print 'Generated',i*20,'votes out of ',len(list_img)*20
 
             if len(out_pairs)>0:
                 # tackling the left-over images
                 pred = []
 
-                while not len(out_images1)==batchsize*30:
+                while not len(out_images1)==batchsize*20:
                     out_images1.append(out_images1[0])
                     out_images2.append(out_images1[0])
-
-                net.blobs['data1'].data[...] = np.array(out_images1)
-                net.blobs['data2'].data[...] = np.array(out_images2)
 
                 out = net.forward_all(data1=np.asarray(out_images1), data2=np.asarray(out_images2))
                 preds = out['fc8r']
