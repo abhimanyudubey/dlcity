@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 def main():
     dir_src = '/home/nikhil/data/placepulse2/images_original/'
-    os.system("rm /home/dubeya/dlcity/code/flask/templates/*.JPG")
+    os.system("rm /home/dubeya/dlcity/code/flask/static/*.JPG")
     subdir_src = [x for x in glob.glob(os.path.join(dir_src, '*')) if os.path.isdir(x)]
     random_subdir = random.choice(subdir_src)
     random_city = os.path.basename(random_subdir)
@@ -29,8 +29,8 @@ def main():
     score = line.strip().split(',')[1]
 
     imgsrc = os.path.join(random_subdir,fname)
-    os.system("cp "+imgsrc+" /home/dubeya/dlcity/code/flask/templates/")
-    imgsrc = "/home/dubeya/dlcity/code/flask/templates/"+fname
+    os.system("cp "+imgsrc+" /home/dubeya/dlcity/code/flask/static/")
+    imgsrc = "/home/dubeya/dlcity/code/flask/static/"+fname
     return render_template('index.html',imgpath=imgsrc,imgscore=score,imgcity=random_city)
 
 if __name__ == "__main__":
