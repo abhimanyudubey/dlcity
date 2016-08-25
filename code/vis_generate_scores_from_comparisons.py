@@ -124,24 +124,7 @@ if __name__=="__main__":
         input_vote_file_right = sys.argv[2]+"_2"
 
         #first construct the folder-wise dictionary
-        parent_directories = {}
-
-        print "Reading votes file first pass"
-        f = open(input_vote_file_left,'r')
-        for line in f:
-            line = line.strip().split()[0]
-            basename = os.path.basename(line)
-            parent_dir = os.path.pardir(line)
-            parent_directories[basename] = parent_dir
-        f.close()
-        f = open(input_vote_file_right,'r')
-        for line in f:
-            line = line.strip().split()[0]
-            basename = os.path.basename(line)
-            parent_dir = os.path.pardir(line)
-            parent_directories[basename] = parent_dir
-        f.close()
-
+        
         print "Creating global parameters"
 
         # parent wise dictionary constructed, now reading the original vote file
