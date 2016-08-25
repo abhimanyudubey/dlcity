@@ -124,10 +124,9 @@ if __name__=="__main__":
 
         #first construct the folder-wise dictionary
         parent_directories = {}
-        f = open(input_vote_file_left,'r')
 
         print "Reading votes file first pass"
-
+        f = open(input_vote_file_left,'r')
         for line in f:
             line = line.strip().split()[0]
             basename = os.path.basename(line)
@@ -187,7 +186,7 @@ if __name__=="__main__":
         new_params, new_ts, new_vals = update_scores(os.path.join(output_dir,'ts_comparisons'),global_ts,global_params)
 
         print "Writing output"
-        
+
         dir_src = sys.argv[5]
         subdir_src = [x for x in glob.glob(os.path.join(dir_src, '*')) if os.path.isdir(x)]
 
