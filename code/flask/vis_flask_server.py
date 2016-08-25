@@ -27,7 +27,7 @@ def main():
     fname = line.strip().split(',')[0]
     score = line.strip().split(',')[1]
 
-    imgsrc = os.path.join(subdir_src,fname)
+    imgsrc = os.path.join(random_subdir,fname)
     return render_template('index.html',imgpath=imgsrc,imgscore=score)
 
 if __name__ == "__main__":
