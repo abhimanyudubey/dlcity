@@ -3,6 +3,13 @@ import os
 import glob
 import random
 
+def random_line(afile):
+    line = next(afile)
+    for num, aline in enumerate(afile):
+      if random.randrange(num + 2): continue
+      line = aline
+    return line
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,11 +24,9 @@ def main():
     score = 0
     fname = ""
 
-    for i,line in enumerate(target_file):
-        if i == random_choice:
-            fname = line.strip().split(',')[0]
-            score = line.strip().split(',')[1]
-            break
+    line = random_line(target_file)
+    fname = line.strip().split(',')[0]
+    score = line.strip().split(',')[1]
 
     imgsrc = os.path.join(subdir_src,fname)
     return render_template('index.html',imgpath=imgsrc,imgscore=score)
