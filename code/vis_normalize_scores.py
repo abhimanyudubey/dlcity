@@ -19,7 +19,7 @@ if __name__=="__main__":
                     if csvscore > global_max:
                         global_max = csvscore
                     elif csvscore < global_min:
-                        global_min = csv_score
+                        global_min = csvscore
 
         for csvfile in csvlist:
             with open(csvfile, 'r') as f, open(csvfile.replace("_votes","_scores"),'w') as of:
