@@ -22,7 +22,7 @@ if __name__=="__main__":
                         global_min = csvscore
 
         for csvfile in csvlist:
-            of = open(csvfile.replace("_votes","_scores"),'w')
+            of = open(csvfile.replace("_votes.csv","_scores.csv"),'w')
             with open(csvfile, 'r') as f:
                 for line in f:
                     fname = line.strip().split(',')[0]
