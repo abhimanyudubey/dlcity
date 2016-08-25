@@ -118,6 +118,7 @@ def update_scores(voteFile, ts, params):
 if __name__=="__main__":
     if len(sys.argv)<6:
         print "Usage: python vis_generate_scores_from_comparisons.py <input-h5-file> <input-vote-file> <input-ref-vote-file> <output-directory> <input-directory>"
+    else:
         h5_file = sys.argv[1]
         input_vote_file_left = sys.argv[2]+"_1"
         input_vote_file_right = sys.argv[2]+"_2"
