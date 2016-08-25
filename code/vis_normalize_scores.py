@@ -7,7 +7,7 @@ if __name__=="__main__":
         print "Usage python vis_normalize_scores.py <input-folder>"
     else:
         dir_src = sys.argv[1]
-        csvlist = glob.glob(os.path.join(dir_src,"_votes.csv"))
+        csvlist = glob.glob(os.path.join(dir_src,"*_votes.csv"))
 
         global_max = 0.0;
         global_min = 1000.0;
