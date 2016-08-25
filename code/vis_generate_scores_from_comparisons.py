@@ -77,7 +77,7 @@ def update_scores(voteFile, ts, params):
     c = 0;
     vals = [[], [], [], [], []];
 
-    for vote in f1, f2:
+    for vote in f1:
         vote = vote.replace(',', ' ');
         vote = vote.strip().split();
         win = 0;
@@ -124,7 +124,7 @@ if __name__=="__main__":
         input_vote_file_right = sys.argv[2]+"_2"
 
         #first construct the folder-wise dictionary
-        
+
         print "Creating global parameters"
 
         # parent wise dictionary constructed, now reading the original vote file
@@ -143,26 +143,25 @@ if __name__=="__main__":
         preds = np.array(vote_file['data'+str(data_ind)]).reshape(813,2)
 
         output_dir = sys.argv[4]
-        output_file = open(os.path.join(output_dir,'ts_comparisons'),'w')
-
-        with open(input_vote_file_left,'r') as f_left, open(input_vote_file_right,'r') as f_right:
-            for line_left,line_right in zip(f_left,f_right):
-                basename_left = os.path.basename(line_left.strip().split()[0])
-                basename_right = os.path.basename(line_right.strip().split()[0])
-                data_ind = int(counter/813)
-                key_name = 'data'+str(data_ind)
-                pred = preds[counter%813]
-                if pred[0]> pred[1]:
-                    output_file.write(basename_left + ' ' + basename_right + ' ' + basename_left + '\n')
-                else:
-                    output_file.write(basename_left + ' ' + basename_right + ' ' + basename_right + '\n')
-
-                counter+=1
-                if counter % 813 == 0:
-                    data_ind+=1
-                    preds = np.array(vote_file['data' + str(data_ind)]).reshape(813, 2)
-
-        output_file.close()
+        # output_file = open(os.path.join(output_dir,'ts_comparisons'),'w')
+        #
+        # with open(input_vote_file_left,'r') as f_left, open(input_vote_file_right,'r') as f_right:
+        #     for line_left,line_right in zip(f_left,f_right):
+        #         basename_left = os.path.basename(line_left.strip().split()[0])
+        #         basename_right = os.path.basename(line_right.strip().split()[0])
+        #         key_name = 'data'+str(data_ind)
+        #         pred = preds[counter%813]
+        #         if pred[0]> pred[1]:
+        #             output_file.write(basename_left + ' ' + basename_right + ' ' + basename_left + '\n')
+        #         else:
+        #             output_file.write(basename_left + ' ' + basename_right + ' ' + basename_right + '\n')
+        #
+        #         counter+=1
+        #         if counter % 813 == 0:
+        #             data_ind+=1
+        #             preds = np.array(vote_file['data' + str(data_ind)]).reshape(813, 2)
+        #
+        # output_file.close()
 
         # now generating new parameters
         print "Generating parameters"
