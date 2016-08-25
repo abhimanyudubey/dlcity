@@ -9,8 +9,8 @@ if __name__=="__main__":
         dir_src = sys.argv[1]
         csvlist = glob.glob(os.path.join(dir_src,"*_votes.csv"))
 
-        global_max = 0.0;
-        global_min = 1000.0;
+        global_max = -1000.0
+        global_min = 1000.0
 
         for csvfile in csvlist:
             with open(csvfile,'r') as f:
