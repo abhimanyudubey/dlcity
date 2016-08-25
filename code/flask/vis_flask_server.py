@@ -30,7 +30,7 @@ def main():
 
     imgsrc = os.path.join(random_subdir,fname)
     os.system("cp "+imgsrc+" /home/dubeya/dlcity/code/flask/static/")
-    imgsrc = "/home/dubeya/dlcity/code/flask/static/"+fname
+    imgsrc = "/static/"+fname
     return render_template('index.html',imgpath=imgsrc,imgscore=score,imgcity=random_city)
 
 if __name__ == "__main__":
