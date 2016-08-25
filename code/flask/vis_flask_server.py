@@ -20,7 +20,7 @@ def main():
     subdir_src = [x for x in glob.glob(os.path.join(dir_src, '*')) if os.path.isdir(x)]
     random_subdir = random.choice(subdir_src)
     random_city = os.path.basename(random_subdir)
-    target_file = open(os.path.join('/home/dubeya/extrapolated_votes/safety/scores',random_city+"_scores.csv"),'r')
+    target_file = open(os.path.join('/home/dubeya/extrapolated_votes/safety/scores',random_city+".csv"),'r')
     score = 0
     fname = ""
 
