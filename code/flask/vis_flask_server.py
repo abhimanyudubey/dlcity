@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/")
 
 def main():
-    dir_src = '/home/nikhil/data/placepulse2/images-original/'
+    dir_src = '/home/nikhil/data/placepulse2/images_original/'
     subdir_src = [x for x in glob.glob(os.path.join(dir_src, '*')) if os.path.isdir(x)]
     random_subdir = random.choice(subdir_src)
     random_city = os.path.basename(random_subdir)
