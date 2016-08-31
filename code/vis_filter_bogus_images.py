@@ -20,8 +20,8 @@ for csvfile in csv_pardir:
         op_file = os.path.join(op_pardir,os.path.basename(csvfile))
         with open(op_file,'w') as f:
             for line in csv_src_file:
-                img_loc = line.strip().split()[0]
-                score = line.strip().split()[1]
+                img_loc = line.strip().split(',')[0]
+                score = line.strip().split(',')[1]
 
                 target_image = np.asarray(caffe.io.load_image(img_loc))
 
