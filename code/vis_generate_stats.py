@@ -33,7 +33,7 @@ with open(stats_file,'w') as f:
         sigma_score = np.asarray(cityscores).std()
         citywise_stats[cityname] = (mean_score,sigma_score)
         f.write(cityname+","+str(mean_score)+","+str(sigma_score)+","+str(len(cityscores)))
-        plt.hist(np.asarray(cityscores),bins,alpha=0.4,label=cityname+' '+mean_score+' '+sigma_score)
+        plt.hist(np.asarray(cityscores),bins,alpha=0.4,label=cityname+' '+str(mean_score)+' '+str(sigma_score))
 
 plt.legend(loc='upper right')
 plt.plot()
