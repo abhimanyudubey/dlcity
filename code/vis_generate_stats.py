@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-src_folder = "/home/dubeya/extrapolated_votes/safety/scores_final/normalized/"
+src_folder = "/home/dubeya/extrapolated_votes/safety/scores_new/normalized/"
 
 csv_files = glob.glob(os.path.join(src_folder,"*.csv"))
 
@@ -24,7 +24,7 @@ for csv_file in csv_files:
 
 bins = np.linspace(0,10,200)
 
-stats_file = "/home/dubeya/extrapolated_votes/safety/scores_final/normalized/stats.txt"
+stats_file = "/home/dubeya/extrapolated_votes/safety/scores_new/normalized/stats.txt"
 
 plt.figure(figsize=(35,35))
 with open(stats_file,'w') as f:
