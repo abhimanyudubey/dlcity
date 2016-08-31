@@ -16,8 +16,8 @@ if not os.path.exists(op_pardir):
 
 for csvfile in csv_pardir:
     with open(csvfile,'r') as csv_src_file:
-        print "Reading csv",csvfile,"right now",os.path.basename(csv_src_file)
-        op_file = os.path.join(op_pardir,os.path.basename(csv_src_file))
+        print "Reading csv",csvfile,"right now",os.path.basename(csvfile)
+        op_file = os.path.join(op_pardir,os.path.basename(csvfile))
         with open(op_file,'w') as f:
             for line in csv_src_file:
                 img_loc = line.strip().split()[0]
