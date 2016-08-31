@@ -7,7 +7,7 @@ if __name__=="__main__":
         print "Usage python vis_normalize_scores.py <input-folder>"
     else:
         dir_src = sys.argv[1]
-        csvlist = glob.glob(os.path.join(dir_src,"*_scores.csv"))
+        csvlist = glob.glob(os.path.join(dir_src,"*.csv"))
 
         global_max = -1000.0
         global_min = 1000.0
@@ -22,7 +22,7 @@ if __name__=="__main__":
                         global_min = csvscore
 
         for csvfile in csvlist:
-            of = open(csvfile.replace("_scores.csv",".csv"),'w')
+            of = open(csvfile.replace(".csv","_normalized.csv"),'w')
             with open(csvfile, 'r') as f:
                 for line in f:
                     fname = line.strip().split(',')[0]
