@@ -15,7 +15,7 @@ if __name__=="__main__":
         for csvfile in csvlist:
             with open(csvfile,'r') as f:
                 for line in f:
-                    csvscore = float(line.strip().split(',')[1])
+                    csvscore = float(line.strip().split()[1])
                     if csvscore > global_max:
                         global_max = csvscore
                     elif csvscore < global_min:
