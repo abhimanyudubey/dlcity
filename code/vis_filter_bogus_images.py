@@ -30,7 +30,7 @@ for csvfile in csv_pardir:
 
                 images_diff = rmse(target_image,ref_image)
 
-                if images_diff > 1e-2:
+                if images_diff > 1e-4:
                     f.write(img_loc+" "+score+"\n")
 
                 else:
