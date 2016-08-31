@@ -25,8 +25,8 @@ if __name__=="__main__":
             of = open(csvfile.replace(".csv","_normalized.csv"),'w')
             with open(csvfile, 'r') as f:
                 for line in f:
-                    fname = line.strip().split(',')[0]
-                    csvscore = float(line.strip().split(',')[1])
+                    fname = line.strip().split()[0]
+                    csvscore = float(line.strip().split()[1])
                     norm_csv_score = 10*(csvscore-global_min)/global_max
                     of.write(fname+','+str(norm_csv_score)+'\n')
             of.close()
