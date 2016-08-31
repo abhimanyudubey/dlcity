@@ -13,6 +13,7 @@ if __name__=="__main__":
         global_min = 1000.0
 
         for csvfile in csvlist:
+            print csvfile
             with open(csvfile,'r') as f:
                 for line in f:
                     csvscore = float(line.strip().split()[1])
@@ -22,6 +23,7 @@ if __name__=="__main__":
                         global_min = csvscore
 
         for csvfile in csvlist:
+            print csvfile
             of = open(csvfile.replace(".csv","_normalized.csv"),'w')
             with open(csvfile, 'r') as f:
                 for line in f:
