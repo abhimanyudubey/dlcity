@@ -17,6 +17,7 @@ if not os.path.exists(op_pardir):
     os.makedirs(op_pardir)
 
 total_bogus_images = 0
+total_images = 0
 bogus_file = open("/home/dubeya/extrapolated_votes/bogus_images.txt",'w')
 
 for csvfile in csv_pardir:
@@ -37,9 +38,10 @@ for csvfile in csv_pardir:
                     f.write(img_loc+" "+score+"\n")
 
                 else:
-                    print "Bogus image found at",img_loc,"number",total_bogus_images
+                    print "Bogus image found at",img_loc,"number",total_bogus_images,"/",total_images
                     total_bogus_images+=1
                     bogus_file.write(img_file+"\n")
+                total_images+=1
 
 bogus_file.close()
 print "Done"
