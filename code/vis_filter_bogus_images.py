@@ -8,9 +8,9 @@ def rmse(predictions, targets):
 
 ref_image = np.asarray(caffe.io.load_image("/home/nikhil/data/placepulse2/images_original/TelAviv/32.131051_34.816062.JPG",color=True))
 image_pardir = "/home/nikhil/data/placepulse2/images_original/"
-csv_pardir = glob.glob("/home/dubeya/extrapolated_votes/scores/*.csv")
-op_pardir = glob.glob("/home/dubeya/extrapolated_votes/scores_new/")
-op_pardir_s = "/home/dubeya/extrapolated_votes/scores_new/"
+csv_pardir = glob.glob("/home/dubeya/extrapolated_votes/safety/scores/*.csv")
+op_pardir = glob.glob("/home/dubeya/extrapolated_votes/safety/scores_new/")
+op_pardir_s = "/home/dubeya/extrapolated_votes/safety/scores_new/"
 
 if not os.path.exists(op_pardir_s):
     os.makedirs(op_pardir_s)
