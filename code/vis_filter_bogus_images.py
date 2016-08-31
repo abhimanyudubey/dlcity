@@ -16,6 +16,9 @@ print ref_image.mean()
 if not os.path.exists(op_pardir):
     os.makedirs(op_pardir)
 
+total_bogus_images = 0
+bogus_file = open("/home/dubeya/extrapolated_votes/bogus_images.txt",'w')
+
 for csvfile in csv_pardir:
     with open(csvfile,'r') as csv_src_file:
         print "Reading csv",csvfile,"right now",os.path.basename(csvfile)
@@ -30,13 +33,13 @@ for csvfile in csv_pardir:
 
                 images_diff = rmse(target_image,ref_image)
 
-                print ref_image.mean(),target_image.mean()
-
                 if images_diff > 1e-5:
                     f.write(img_loc+" "+score+"\n")
 
                 else:
-                    print "Bogus image found at",img_loc
+                    print "Bogus image found at",img_loc,"number",total_bogus_images
+                    total_bogus_images+=1
+                    bogus_file.write(img_file+"\n")
 
-
+bogus_file.close()
 print "Done"
