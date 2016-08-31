@@ -11,6 +11,8 @@ image_pardir = "/home/nikhil/data/placepulse2/images_original/"
 csv_pardir = glob.glob("/home/dubeya/extrapolated_votes/safety/scores/*.csv")
 op_pardir = "/home/dubeya/extrapolated_votes/safety/scores_new"
 
+print ref_image.mean()
+
 if not os.path.exists(op_pardir):
     os.makedirs(op_pardir)
 
