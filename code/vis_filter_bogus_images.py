@@ -23,7 +23,8 @@ for csvfile in csv_pardir:
                 img_loc = line.strip().split(',')[0]
                 score = line.strip().split(',')[1]
 
-                target_image = np.asarray(caffe.io.load_image(img_loc))
+                img_file = os.path.join("/home/nikhil/data/placepulse2/images_original/",os.path.basename(csvfile).replace(".csv",""),img_loc)
+                target_image = np.asarray(caffe.io.load_image(img_file))
 
                 images_diff = rmse(target_image,ref_image)
 
