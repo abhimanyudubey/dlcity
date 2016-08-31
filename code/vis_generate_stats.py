@@ -15,7 +15,7 @@ citywise_scores = {}
 
 for csv_file in csv_files:
     scores = []
-    cityname = os.path.basename(cityname).replace("_normalized.csv","")
+    cityname = os.path.basename(csv_file).replace("_normalized.csv","")
     with open(csv_file,'r') as f:
         for line in f:
             score = float(line.strip().split(',')[1])
