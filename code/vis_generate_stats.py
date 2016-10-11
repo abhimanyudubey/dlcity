@@ -1,11 +1,12 @@
 import os
+import sys
 import glob
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-src_folder = "/home/dubeya/extrapolated_votes/safety/scores_new/normalized/"
+src_folder = sys.argv[1]
 
 csv_files = glob.glob(os.path.join(src_folder,"*.csv"))
 
@@ -15,7 +16,7 @@ citywise_scores = {}
 
 for csv_file in csv_files:
     scores = []
-    cityname = os.path.basename(csv_file).replace("_normalized.csv","")
+    cityname = os.path.basename(csv_file).replace(".csv","")
     with open(csv_file,'r') as f:
         for line in f:
             score = float(line.strip().split(',')[1])
@@ -24,7 +25,7 @@ for csv_file in csv_files:
 
 bins = np.linspace(0,10,200)
 
-stats_file = "/home/dubeya/extrapolated_votes/safety/scores_new/normalized/stats.txt"
+stats_file = sys.argv[2]
 
 plt.figure(figsize=(35,35))
 with open(stats_file,'w') as f:
