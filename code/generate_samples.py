@@ -1,4 +1,3 @@
-import os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -10,7 +9,7 @@ parser = argparse.ArgumentParser(prog='generate_samples.py')
 parser.add_argument('-i','--input',help='path to csv file with 3 fields: lat,long,score',required=True)
 parser.add_argument('-o','--output',help='output file path to store image',required=True)
 parser.add_argument('-r','--ratio',help='ratio of points to be selected, default 1',required=False,default=1,type=float)
-parser.add_argument('-s','--size',help='size of dots',required=False,default=0.005,type=float)
+parser.add_argument('-s','--size',help='size of dots, default 0.005',required=False,default=0.005,type=float)
 args = vars(parser.parse_args())
 
 colors = ['r','#ffae00','y','#58a028','#274f0d']
