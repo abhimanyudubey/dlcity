@@ -16,7 +16,7 @@ def process(inputs):
     max_y = max([x[1] for x in points])
 
     fd = lambda p: dm.dpoly(p, points)
-    gen_points, gen_triangles = dm.distmesh2d(fd, dm.huniform, args['scale'], (min_x, min_y, max_x, max_y), points)
+    gen_points, gen_triangles = dm.distmesh2d(fd, dm.huniform, args['scale'], (min_x, min_y, max_x, max_y), points, None)
 
     with open(out_file, 'w') as of:
         for pt in gen_points:
