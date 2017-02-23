@@ -1,0 +1,3 @@
+[submodule "pydistmesh"]
+	path = pydistmesh
+	url = https://github.com/bfroehle/pydistmesh.git
