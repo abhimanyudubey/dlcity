@@ -44,5 +44,5 @@ datapoints.reverse()
 for i,point_set in enumerate(datapoints):
     plt.scatter(point_set[:,0],point_set[:,1],c=colors[i],s=args['size'],lw = 0)
 
-plt.savefig(args['output'],dpi=3000)
+plt.savefig(args['output'],dpi=300)
 
