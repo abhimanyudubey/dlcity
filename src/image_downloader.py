@@ -74,10 +74,12 @@ for batch in range(n_batches):
 
 out_csv_selected = os.path.join(args.output, os.path.basename(args.input))
 with open(out_csv_selected, 'w') as newfile:
+    c = 0
     for xx, inclx in zip(x, incl_data):
         if inclx:
             newfile.write(xx[1]+','+xx[2]+'\n')
-
+            c += 1
+print 'Rechecked CSV for locations, written at %s, with %d points' (out_csv_selected, c)
 
 
 
