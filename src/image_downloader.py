@@ -26,6 +26,7 @@ with open(keyfile, 'r') as key_file:
         keys.append(this_key)
     start_key = random.choice(range(len(keys)))
 no_imagery_file = os.path.join(os.path.realpath(os.path.dirname(__file__)),'../data/no_imagery.jpg')
+ref_img = cv2.imread(no_imagery_file)
 
 parser = argparse.ArgumentParser('Download Images from StreetView (Multithreaded)')
 parser.add_argument('-i', '--input', help='Input CSV file with points \n format: lat,long per line', required=True, type=str)
