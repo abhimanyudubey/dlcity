@@ -34,7 +34,7 @@ parser.add_argument('-o', '--output', help='Output directory to store downloaded
 parser.add_argument('-c', '--cores', help='Number of multithreaded cores (default 1)', required=False, default=1, type=int)
 args = parser.parse_args()
 
-if not os.path.exists(args.output)
+if not os.path.exists(args.output):
     os.makedirs(args.output)
 
 x = []
