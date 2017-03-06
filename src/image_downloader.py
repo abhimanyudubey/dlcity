@@ -9,7 +9,7 @@ import time
 
 def download_and_check(args):
     global ref_img
-    api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % (args[:])
+    api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % tuple(args)
     os.system(api_req)
     img = cv2.imread(args[-1])
     res_err = np.linalg.norm(img-ref_img,ord=2)
