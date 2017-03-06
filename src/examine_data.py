@@ -29,10 +29,13 @@ import matplotlib.pyplot as plt
 
 data_points = []
 with open(args.input,'r') as inp_file:
+    c = 0
     for line in inp_file:
-        line = line.replace('_',',')
-        lat, lon, inps = line.strip().split(',')
-        data_points.append((float(lat), float(lon), inps.replace('"','')))
+        if c > 0:
+            line = line.replace('_',',')
+            lat, lon, inps = line.strip().split(',')
+            data_points.append((float(lat), float(lon), inps.replace('"','')))
+        c += 1
 
 # read data file, now choosing and displaying files randomly
 out_dir = tempfile.gettempdir()
@@ -54,13 +57,17 @@ for i in range(args.n_samples):
     output_file = os.path.join(out_dir, '_'.join([location.replace(',','_'), str(heading), size, fval])+'.jpg')
     cmd = 'wget -q '+ api_req +' -O ' + output_file
     os.system(cmd)
-    img = cv2.imread(output_file)
-    plt.imshow(img)
-    title_text = '%s' % fval
-    plt.suptitle(title_text)
-    plt.axis('off')
-    if not args.skip_view:
-        plt.show()
-    plt.savefig(output_file[:-4]+'.figure.png', bbox_inches='tight')
+    try:
+        img_bgr = cv2.imread(output_file)
+        img = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        plt.imshow(img)
+        title_text = '%s' % fval
+        plt.suptitle(title_text)
+        plt.axis('off')
+        if not args.skip_view:
+            plt.show()
+        plt.savefig(output_file[:-4]+'.figure.png', bbox_inches='tight')
+    except:
+        print 'Error in loading image'
 
 
