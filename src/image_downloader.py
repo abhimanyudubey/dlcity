@@ -9,14 +9,15 @@ import time
 
 def download_and_check(args):
     global ref_img
-    try:
-        api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % tuple(args)
-        os.system(api_req)
-        img = cv2.imread(args[-1])
-        res_err = np.linalg.norm((img-ref_img).flatten(),ord=2)
-        return res_err > 0.1
-    except:
-        return False
+    if not os.path.exists(args[-1]):
+        try:
+            api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % tuple(args)
+            os.system(api_req)
+            img = cv2.imread(args[-1])
+            res_err = np.linalg.norm((img-ref_img).flatten(),ord=2)
+            return res_err > 0.1
+        except:
+            return False
 
 
 
@@ -70,7 +71,8 @@ for batch in range(n_batches):
         for imt in this_data:
             incl_data.append(download_and_check(imt))
     print '%d elements done ...' % end_point
-    time.sleep(24*24*60)
+    if n_batches > 1:
+        time.sleep(24*24*60)
 
 out_csv_selected = os.path.join(args.output, os.path.basename(args.input))
 with open(out_csv_selected, 'w') as newfile:
