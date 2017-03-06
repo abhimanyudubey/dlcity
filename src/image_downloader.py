@@ -81,7 +81,7 @@ with open(out_csv_selected, 'w') as newfile:
         if inclx:
             newfile.write(xx[1]+','+xx[2]+'\n')
             c += 1
-print 'Rechecked CSV for locations, written at %s, with %d points' (out_csv_selected, c)
+print 'Rechecked CSV for locations, written at %s, with %d points' % (out_csv_selected, c)
 
 
 
