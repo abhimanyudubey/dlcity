@@ -12,9 +12,8 @@ def download_and_check(args):
     api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % tuple(args)
     os.system(api_req)
     img = cv2.imread(args[-1])
-    print img.shape, ref_img.shape
-    res_err = np.linalg.norm(img-ref_img,ord=2)
-    return res_err > 0.001
+    res_err = np.linalg.norm((img-ref_img).flatten(),ord=2)
+    return res_err > 0.1
 
 
 
