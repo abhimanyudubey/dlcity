@@ -9,7 +9,6 @@ import time
 
 def download_and_check(args):
     global ref_img
-    print args
     api_req = 'wget -q "http://maps.googleapis.com/maps/api/streetview?size=%s&location=%s,%s&sensor=false&key=%s" -O %s' % (args[:])
     os.system(api_req)
     img = cv2.imread(args[-1])
@@ -66,4 +65,15 @@ for batch in range(n_batches):
             incl_data.append(download_and_check(imt))
     print '%d elements done ...' % end_point
     time.sleep(24*24*60)
+
+out_csv_selected = os.path.join(args.output, os.path.basename(args.input))
+with open(out_csv_selected, 'w') as newfile:
+    for xx, inclx in zip(x, incl_data):
+        if inclx:
+            newfile.write(xx[1]+','+xx[2]+'\n')
+
+
+
+
+
 
