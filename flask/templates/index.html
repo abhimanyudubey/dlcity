@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StreetScore 2.0 Visualizer</title>
+    <title>PlacePulse 2.0 Visualizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style type="text/css">
       .container {
         max-width: 500px;
-        padding-top: 100px;
       }
     </style>
   </head>
   <body>
+  <center>
     <div class="container">
-      <p>City: {{city}}</p>
-      <p>Value from the list: {{my_list[3]}}</p>
+        <h1>PlacePulse 2.0 Visualizer</h1>
+        <hr width="80%" color="green">
+      <p>{{city}}</p>
+    </div>
+  </center>
+        <table align="center">
+            {% for i in range(4) %}
+            <tr>
+                {% for j in range(5) %}
+                <td width="20%"><img src="{{paths[i*4+j]}}" width="200" height="150"><br>{{scores[i*4+j]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    </div>
+  </center>
   </body>
 </html>
