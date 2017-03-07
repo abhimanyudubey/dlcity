@@ -69,4 +69,4 @@ def main():
     return render_template('index.html',scores=scores, city=city, paths=paths)
 
 if __name__ == "__main__":
-    app.run(port=3000,debug=True)
+    app.run(port=3000)
