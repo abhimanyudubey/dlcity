@@ -41,7 +41,7 @@ def main():
     paths = []
     i = 0
 
-    while i < 20:
+    while i < 9:
         req_key = keys[(start_key + i) % len(keys)]
         random_index = random.choice(range(len(data_points)))
         fval = data_points[random_index][2]

@@ -19,10 +19,10 @@
     </div>
   </center>
         <table align="center">
-            {% for i in range(4) %}
+            {% for i in range(3) %}
             <tr>
-                {% for j in range(5) %}
-                <td width="20%"><img src="{{paths[i*4+j]}}" width="200" height="150"><br>{{scores[i*4+j]}}</td>
+                {% for j in range(3) %}
+                <td width="20%"><img src="{{paths[i*3+j]}}" width="200" height="150"><br>{{scores[i*4+j]}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
