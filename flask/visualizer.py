@@ -52,19 +52,25 @@ def main():
         output_file = os.path.join('/tmp/', '_'.join([location.replace(',', '_'), str(heading), size, fval]) + '.jpg')
         cmd = 'wget -q "' + api_req + '" -O ' + output_file
         os.system(cmd)
-        i += 1
         try:
             img = cv2.imread(output_file)
             res_err = np.linalg.norm((img - ref_img).flatten(), ord=2)
-            paths.append(api_req)
             if res_err > 0.001:
                 scores.append(fval)
+                paths.append(api_req)
+                i += 1
             else:
-                scores.append(0.0000)
+                print res_err
         except:
             continue
         # except:
         #     continue
+
+        sp = zip(scores,paths)
+        ssp = sorted(sp)
+        ssp.reverse()
+        scores = [x[0] for x in ssp]
+        paths = [x[1] for x in ssp]
 
     return render_template('index.html',scores=scores, city=city, paths=paths)
 
