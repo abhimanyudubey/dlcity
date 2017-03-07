@@ -5,7 +5,7 @@ import cv2
 import matplotlib
 import tempfile
 
-keyfile = os.path.join(os.path.realpath(os.path.dirname(__file__)),'../../STREETVIEW_KEYS')
+keyfile = os.path.join(os.path.realpath(os.path.dirname(__file__)),'../STREETVIEW_KEYS')
 keys = []
 start_key = 0
 with open(keyfile, 'r') as key_file:

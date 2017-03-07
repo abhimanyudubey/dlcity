@@ -49,7 +49,7 @@ with open(args.input, 'r') as inpfile:
         if i>0:
             line = line.strip().replace('_',',')
             vals = line.split(',')
-            lat, lon = vals[0], vals[1]
+            lat, lon = vals[1], vals[0]
             apikey = keys[ (i + start_key) % len(keys)]
             outfile = os.path.join(args.output, lat+'_'+lon+'.jpg')
             x.append([size, lat, lon, apikey, outfile])
@@ -79,7 +79,7 @@ with open(out_csv_selected, 'w') as newfile:
     c = 0
     for xx, inclx in zip(x, incl_data):
         if inclx:
-            newfile.write(xx[1]+','+xx[2]+'\n')
+            newfile.write(xx[2]+','+xx[1]+'\n')
             c += 1
 print 'Rechecked CSV for locations, written at %s, with %d points' % (out_csv_selected, c)
 
