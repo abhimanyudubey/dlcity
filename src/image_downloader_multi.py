@@ -19,6 +19,7 @@ def download_and_check(args):
             return res_err > 0.1
         except:
             return False
+    return True
 
 
 
