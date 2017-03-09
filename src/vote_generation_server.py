@@ -254,7 +254,7 @@ if __name__ == "__main__":
             sk = False
             for line in vote_file:
                 if sk:
-                    vals = line.strip.split('\t')
+                    vals = line.strip().split('\t')
                     left_image = image_ids[vals[2]]
                     right_image = image_ids[vals[3]]
                     attribute = study_ids[vals[4]]
