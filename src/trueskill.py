@@ -53,7 +53,7 @@ class TrueSkill:
     var_winner *= (1.0 - var_winner*w/(c**2))
     var_loser *= (1.0 - var_loser*w/(c**2))
     if var_winner < 0 or var_loser < 0: print(mu_winner, mu_loser)
-    return ((mu_winner, var_winner), (mu_loser, var_loser))
+    return mu_winner, var_winner,mu_loser, var_loser
 
   @staticmethod
   def inv_cdf(prob):
