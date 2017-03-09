@@ -190,12 +190,12 @@ def run_vote_generator(image_list_pair, num, attribute, gpuID):
 
     return updates
 
-def generate_votes(args)
+def generate_votes(args):
     image_list_pair = (args[0], args[1])
     num = args[3]
     attribute = args[4]
     gpuid = args[5]
-    updates = run_vote_generator(image_list_pair, num, attribute, gpuID)
+    updates = run_vote_generator(image_list_pair, num, attribute, gpuid)
     return updates
 
 def update_current_index(index, ref_index, city, attribute, updates, ts):
@@ -239,7 +239,7 @@ if __name__ == "__main__":
                     vals = line.strip().split('\t')
                     id = vals[0]
                     fn = '/home/dubeya/dlcity/data/ref_images/'+id+'.JPG'
-                    image_ids{id} = fn
+                    image_ids[id] = fn
                 else:
                     sk = True
         # read images now initializing index
