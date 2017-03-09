@@ -81,6 +81,8 @@ def update_file_index():
                 if city_file not in city_index:
                     if is_valid_image(city_file):
                         city_index[city_file] = (0, ts_mean, ts_sigma)
+                    else:
+                        os.remove(city_file)
             attribute_index[city] = city_index
         index[attribute] = attribute_index
 
