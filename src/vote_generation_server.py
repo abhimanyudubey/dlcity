@@ -120,7 +120,7 @@ def reference_index_exists():
     global image_dir, ref_image_dir, model_dir, votes_dir, scratch_dir, ts_mean, ts_sigma, attributes
     exists = True
     for elem in attributes:
-        exists = exists and os.path.exists(os.path.join(scratch_dir, 'ref_indexes' elem+'.index'))
+        exists = exists and os.path.exists(os.path.join(scratch_dir, 'ref_indexes',elem+'.index'))
 
     return exists
 
