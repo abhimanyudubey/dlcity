@@ -1,0 +1,12 @@
+On the validation set of places205.
+
+I0522 14:27:33.730528 28900 solver.cpp:266] Iteration 2400000, Testing net (#0)
+I0522 14:30:01.326143 28900 solver.cpp:315]     Test net output #0: loss1/loss1 = 1.75267 (* 0.3 = 0.525802 loss)
+I0522 14:30:01.326318 28900 solver.cpp:315]     Test net output #1: loss1/top-1 = 0.51348
+I0522 14:30:01.326334 28900 solver.cpp:315]     Test net output #2: loss1/top-5 = 0.824022
+I0522 14:30:01.326347 28900 solver.cpp:315]     Test net output #3: loss2/loss1 = 1.64169 (* 0.3 = 0.492506 loss)
+I0522 14:30:01.326357 28900 solver.cpp:315]     Test net output #4: loss2/top-1 = 0.5404
+I0522 14:30:01.326366 28900 solver.cpp:315]     Test net output #5: loss2/top-5 = 0.842581
+I0522 14:30:01.326378 28900 solver.cpp:315]     Test net output #6: loss3/loss3 = 1.57097 (* 1 = 1.57097 loss)
+I0522 14:30:01.326387 28900 solver.cpp:315]     Test net output #7: loss3/top-1 = 0.556719
+I0522 14:30:01.326397 28900 solver.cpp:315]     Test net output #8: loss3/top-5 = 0.854162
