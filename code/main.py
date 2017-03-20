@@ -39,7 +39,7 @@ def process_images(args):
                 neighbor_lat = [images[x][0] for x in neighbor_indices]
                 neighbor_lon = [images[x][1] for x in neighbor_indices]
 
-                score_distortion_ratio = random.uniform(0.15, 0.5)
+                score_distortion_ratio = random.uniform(0.05, 0.15)
                 output_score = np.mean(neighbor_scores) * (score_distortion_ratio) + random.uniform(0, 10) * (
                     1 - score_distortion_ratio)
 
