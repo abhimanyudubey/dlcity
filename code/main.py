@@ -47,7 +47,7 @@ def process_images(args):
 
         print '%s written' % mesh_file
     except:
-        continue
+        return 0
 
 
 mesh_folder = sys.argv[1]
