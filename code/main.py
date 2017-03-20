@@ -54,6 +54,9 @@ mesh_folder = sys.argv[1]
 score_folder = sys.argv[2]
 out_folder = sys.argv[3]
 
+if not os.path.exists(out_folder):
+    os.makedirs(out_folder)
+
 meshes = glob.glob(os.path.join(mesh_folder,'*.csv'))
 
 varargs = []
