@@ -25,7 +25,7 @@ def process_images(args):
 
         mesh_points = []
 
-        with open(mesh_file, 'r') as f:
+        with open(mesh_city_name, 'r') as f:
             for line in f:
                 l = line.strip().split(',')
                 lat = float(l[0])
