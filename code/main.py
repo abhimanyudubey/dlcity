@@ -10,6 +10,7 @@ def process_images(args):
         mesh_city_name = args[0]
         score_file_name = args[1]
         fno = args[2]
+        mesh_file_name = args[3]
 
         images = []
 
@@ -25,7 +26,7 @@ def process_images(args):
 
         mesh_points = []
 
-        with open(mesh_city_name, 'r') as f:
+        with open(mesh_file_name, 'r') as f:
             for line in f:
                 l = line.strip().split(',')
                 lat = float(l[0])
@@ -65,7 +66,7 @@ for mesh_file in meshes:
     score_file_name = os.path.join(score_folder, mesh_city_name)
     fno = os.path.join(out_folder, mesh_city_name)
 
-    varargs.append([mesh_city_name, score_file_name, fno])
+    varargs.append([mesh_city_name, score_file_name, fno, mesh_file])
 
 pool = Pool(processes=32)
 print 'got here'
