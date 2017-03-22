@@ -68,4 +68,5 @@ for mesh_file in meshes:
     varargs.append([mesh_city_name, score_file_name, fno])
 
 pool = Pool(processes=32)
+print 'got here'
 pool.map(process_images, varargs)
