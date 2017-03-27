@@ -24,7 +24,7 @@ ref_img = cv2.imread(no_imagery_file)
 @app.route("/")
 def main():
     global start_key, keys
-    file_list = glob.glob(os.path.join(os.path.realpath(os.path.dirname(__file__)),'../data/dense_scores_safety_new/*.csv'))
+    file_list = glob.glob(os.path.join(os.path.realpath(os.path.dirname(__file__)),'../data/dense_safety_30/*.csv'))
     this_file = random.choice(file_list)
     data_points = []
     with open(this_file, 'r') as inp_file:
