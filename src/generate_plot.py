@@ -8,7 +8,7 @@ import os
 inp_file = '/home/dubeya/dlcity/data/dense_safety_30'
 
 csv_list = glob.glob(inp_file+'/*.csv')
-mats = [np.genfromtxt(x) for x in csv_list]
+mats = [np.genfromtxt(x, delimiter=',') for x in csv_list]
 
 means = [np.mean(x[:,2]) for x in mats]
 sigmas = [np.std(x[:,1]) for x in mats]
