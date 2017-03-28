@@ -1,7 +1,7 @@
 import glob
 import matplotlib
 matplotlib.use('Agg')
-matplotlib.rcParams['xtick.labelsize'] = 8
+matplotlib.rcParams['xtick.labelsize'] = 6
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -22,6 +22,6 @@ ss = [x[1] for x in data]
 sc = [x[2] for x in data]
 
 plt.figure()
-plt.errorbar(range(len(sm)), sm, yerr=ss)
-plt.xticks(range(len(sm)), sc, rotation='vertical')
+plt.errorbar(range(5,len(sm)+5), sm, yerr=ss)
+plt.xticks(range(5,len(sm)+5), sc, rotation='vertical')
 plt.savefig('output.png', dpi=600)
