@@ -49,7 +49,7 @@ with open(args.input, 'r') as inpfile:
         if i>0:
             line = line.strip().replace('_',',')
             vals = line.split(',')
-            lat, lon = vals[1], vals[0]
+            lat, lon = vals[0], vals[1]
             apikey = keys[ (i + start_key) % len(keys)]
             outfile = os.path.join(args.output, lat+'_'+lon+'.jpg')
             x.append([size, lat, lon, apikey, outfile])
