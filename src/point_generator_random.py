@@ -61,6 +61,7 @@ if __name__ == '__main__':
         base_name = os.path.basename(location)
         out_location = os.path.join(args.output, base_name)
         hull, points = getConvexHull(location)
+        print hull.vertices
         hull_path = Path(points[hull.vertices])
         n_points = int(args.scale*hull.area)
 
