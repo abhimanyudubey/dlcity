@@ -13,8 +13,8 @@ def generatePoints(hull, bd, n_points, handle='city'):
     points = []
     c = 0
     while c<n_points:
-        x = np.random.uniform()*[bd[1]-bd[0]] + bd[0]
-        y = np.random.uniform()*[bd[3]-bd[2]] + bd[2]
+        x = np.random.uniform()*(bd[1]-bd[0]) + bd[0]
+        y = np.random.uniform()*(bd[3]-bd[2]) + bd[2]
         if inConvexHull((x,y), hull):
             points.append((x,y))
             c+=1
