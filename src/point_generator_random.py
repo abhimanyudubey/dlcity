@@ -23,7 +23,7 @@ def generatePoints(hull, bd, n_points, handle='city'):
     return points
 
 def writePointsToFile(points, output_file):
-    par_dir = os.path.pardir(output_file)
+    par_dir = os.path.dirname(output_file)
     if not os.path.exists(par_dir):
         os.makedirs(par_dir)
 
