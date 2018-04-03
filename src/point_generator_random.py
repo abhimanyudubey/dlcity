@@ -64,7 +64,7 @@ if __name__ == '__main__':
         hull_path = Path(points)
         n_points = int(args.scale*hull.area)
 
-        bd = getBoundaries(points[hull.vertices])
+        bd = getBoundaries(points)
         points = generatePoints(hull_path, bd, n_points, base_name)
 
         writePointsToFile(points, out_location)
