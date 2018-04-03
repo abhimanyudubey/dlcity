@@ -38,7 +38,7 @@ def getConvexHull(file_name):
             ptx = float(line.strip().split(',')[0])
             pty = float(line.strip().split(',')[1])
             pts.append((ptx, pty))
-    return ConvexHull(pts)
+    return ConvexHull(pts), pts
 
 def getBoundaries(points):
     max_x = max([x[0] for x in points])
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     for location in locations:
         base_name = os.path.basename(location)
         out_location = os.path.join(args.output, base_name)
-        hull = getConvexHull(location)
+        hull, points = getConvexHull(location)
         hull_path = Path(points[hull.vertices])
         n_points = int(args.scale*hull.area)
 
@@ -69,4 +69,3 @@ if __name__ == '__main__':
 
         writePointsToFile(points, out_location)
         print '%s points generated successfully' % (out_location)
-        
