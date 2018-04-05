@@ -57,7 +57,7 @@ for csvfile in files_list:
             if i>0:
                 line = line.strip().replace('_',',')
                 vals = line.split(',')
-                lat, lon = vals[1], vals[0]
+                lat, lon = vals[1].replace(' ', ''), vals[0].replace(' ','')
                 apikey = keys[ (i + start_key) % len(keys)]
                 outfile = os.path.join(args.output, csvfile_basename, lat+'_'+lon+'.jpg')
                 x.append([size, lat, lon, apikey, outfile])
