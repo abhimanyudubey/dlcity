@@ -44,11 +44,11 @@ if not os.path.exists(args.output):
     os.makedirs(args.output)
 
 x = []
-size = '400x400'
+size = '640x640'
 
 files_list = glob.glob(os.path.join(args.input,'*.csv'))
 for csvfile in files_list:
-    csvfile_basename = os.path.basename(csvfile)[:-4].split('_')[-1]
+    csvfile_basename = os.path.basename(csvfile)[:-4].split('/')[-1]
     if not os.path.exists(os.path.join(args.output, csvfile_basename)):
         os.makedirs(os.path.join(args.output, csvfile_basename))
 
@@ -60,7 +60,7 @@ for csvfile in files_list:
                 lat, lon = vals[1].replace(' ', ''), vals[0].replace(' ','')
                 apikey = keys[ (i + start_key) % len(keys)]
                 outfile = os.path.join(args.output, csvfile_basename, lat+'_'+lon+'.jpg')
-                x.append([size, lat, lon, apikey, outfile])
+                x.append([size, lon, lat, apikey, outfile])
 
 n_max_images = 25495 * len(keys)
 n_batches = len(x) / n_max_images + 1
